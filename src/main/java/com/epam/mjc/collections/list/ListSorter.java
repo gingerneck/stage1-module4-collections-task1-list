@@ -12,8 +12,12 @@ public class ListSorter {
 class ListComparator implements Comparator<String> {
     @Override
     public int compare(String a, String b) {
-        var inta = Integer.parseInt(a);
-        var intb = Integer.parseInt(b);
-        return (5 * inta ^ 2 + 3) == intb * inta ? -1 : 1;
+        int first = Integer.parseInt(a);
+        int second = Integer.parseInt(b);
+        int res = Integer.compare(Math.abs(first), Math.abs(second));
+        if (res == 0) {
+            res = Integer.compare(first, second);
+        }
+        return res;
     }
 }
